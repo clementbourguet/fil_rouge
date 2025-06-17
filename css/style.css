@@ -1,7 +1,10 @@
 /*----------HEADER----------*/
-body, html {
+body,
+html {
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
+
 .container {
     display: flex;
     flex-direction: column;
@@ -19,7 +22,7 @@ body, html {
 .pink_line {
     width: 18px;
     height: 3px;
-    border-radius: 25%;
+    border-radius: 10px;
     background-color: var(--accent-color);
     margin-top: 10px;
 }
@@ -65,7 +68,7 @@ h3 {
     height: 100%;
     margin-top: 50px;
     z-index: 0;
-    
+
 }
 
 #light_flower {
@@ -92,23 +95,35 @@ section {
     margin-top: 200px;
     font-family: var(--font-h3);
     height: auto;
-    
-}
-.articles {
-    margin-top: 40px;
-}
-a {
-    background-color: var(--secondary-color);
-    padding: 15px 30px;
-    border-radius: 10px;
-    color: var(--primary-color);
-    border: solid 2px var(--primary-color);
+
 }
 
-#btn_plus {
+.articles {
+    .pink_line {
+        align-self: center;
+    }
+
+    margin-top: 40px;
+
+}
+
+.btn_reserver {
+    background-color: var(--secondary-color);
+    padding: 15px 31px;
+    border-radius: 10px;
+    color: var(--primary-color);
+    border: solid 1px var(--primary-color);
+    font-family: var(--font-p);
+}
+
+.savoir_plus {
     margin-top: 20px;
     background-color: white;
     padding: 15px 62px;
+    border-radius: 10px;
+    color: var(--primary-color);
+    border: solid 1px var(--primary-color);
+    font-family: var(--font-p);
 }
 
 #arrow {
@@ -116,14 +131,13 @@ a {
 }
 
 main {
-    background: linear-gradient(to bottom, transparent, var(--secondary-color));
+    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(208, 196, 226, 1) 50%, rgba(255, 255, 255, 1) 100%);
     height: auto;
 }
 
 article {
-    display: grid;
-    grid-template-columns: 20% 70%;
-    grid-template-rows: 1fr auto;
+    display: flex;
+    flex-direction: column;
     background-color: white;
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -131,13 +145,12 @@ article {
     height: auto;
     margin-bottom: 35px;
     margin: 45px;
+    padding: 30px;
 }
 
 #flower_round {
-    width: 100%;
+    width: 35%;
     height: auto;
-    grid-column: 1;
-    grid-row: 1;
     display: flex;
     align-self: center;
     padding: 10px;
@@ -147,10 +160,11 @@ article h3 {
     grid-column: 2;
     grid-row: 1;
     padding: 10px;
-    letter-spacing: 0.2em;
-    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    font-size: 1.3rem;
     align-self: center;
     margin: 0px;
+    margin-top: 10px;
 }
 
 article p {
@@ -158,7 +172,62 @@ article p {
     grid-row: 2;
     padding-left: 8px;
     padding-bottom: 20px;
+    padding-top: 20px;
+    font-family: var(--font-p);
+    color: var(--primary-color);
+    font-size: 1em;
+    text-align: justify;
+}
+
+em,
+strong {
+    font-family: var(--font-p-bold);
+}
+
+em {
+    font-style: italic;
+}
+
+article a {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/*----------FOOTER----------*/
+
+.social {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    width: 80%;
+    height: auto;
+        img {
+        width: 30%;
+        height: 30%;
+    }
+}
+.social a img {
+    width: 30px;
+    height: 30px;
+}
+.retour {
     font-family: var(--font-h3);
     color: var(--primary-color);
-    font-size: 0.7em;
+    font-size: 1rem;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+li {
+    margin: 0 15px;
 }
