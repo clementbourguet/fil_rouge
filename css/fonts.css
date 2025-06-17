@@ -1,0 +1,101 @@
+
+
+/*----------Fonts----------*/
+
+@font-face {
+  font-family: 'cormorant';
+  src: url('../fonts/Cormorant/Cormorant-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'cormorant bold';
+  src: url('../fonts/Cormorant/Cormorant-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'cormorant italic';
+  src: url('../fonts/Cormorant/Cormorant-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'cormorant bold italic';
+  src: url('../fonts/Cormorant/Cormorant-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'cormorant sc';
+  src: url('../fonts/Cormorant/CormorantSC-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'cormorant sc bold';
+  src: url('../fonts/Cormorant/CormorantSC-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'cormorant sc italic';
+  src: url('../fonts/Cormorant/CormorantSC-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'cormorant sc bold italic';
+  src: url('../fonts/Cormorant/CormorantSC-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'cormorant garamond';
+  src: url('../fonts/CormorantGaramond/CormorantGaramond-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'cormorant garamond bold';
+  src: url('../fonts/CormorantGaramond/CormorantGaramond-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'cormorant garamond italic';
+  src: url('../fonts/CormorantGaramond/CormorantGaramond-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'cormorant garamond bold italic';
+  src: url('../fonts/CormorantGaramond/CormorantGaramond-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'cormorant garamond sc';
+  src: url('../fonts/CormorantGaramond/CormorantGaramondSC-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'cormorant garamond sc bold';
+  src: url('../fonts/CormorantGaramond/CormorantGaramondSC-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}

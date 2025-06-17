@@ -1,0 +1,20 @@
+
+/*------Variables couleurs------*/
+
+:root {
+    --primary-color : #6F4595;
+    --secondary-color : #D0C4E2;
+    --accent-color : #CF67A5;
+
+    /*------Variables fonts------*/
+
+    --font-h1: 'cormorant', serif;
+    --font-h2: 'cormorant garamond', serif;
+    --font-p: 'cormorant sc', serif;
+    --font-p-bold: 'cormorant sc bold', serif;
+    --font-p-italic: 'cormorant sc italic', serif;
+
+    --font-h3: 'quicksand', sans-serif;
+    --font-h3-bold: 'quicksand bold', sans-serif;
+    --font-h3-italic: 'quicksand italic', sans-serif;
+} 
