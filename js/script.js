@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextDayBtn = document.getElementById("next_arrow");
     const slotsList = document.querySelector(".slots_display ul");
 
+    // formatage de la date
     const options = {
         weekday: 'short',
         day: 'numeric',
@@ -14,7 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
         year: 'numeric'
     };
 
-    // Créneaux horaires à afficher
+
+    // tableau de creneaux horaires
     const timeSlots = [
         "9h-10h",
         "10h-11h",
@@ -26,25 +28,26 @@ document.addEventListener('DOMContentLoaded', () => {
         "17h-18h"
     ];
 
-
-    // Exemple de créneaux réservés par date (clé: date en yyyy-mm-dd)
+    //créneaux réservés par date (clé: date en yyyy-mm-dd)
     const bookedSlots = {
-        // Exemple: 2025-06-30, les créneaux 10h-11h et 14h-15h sont réservés
         "2025-06-30": ["10h-11h", "14h-15h"],
         "2025-07-01": ["9h-10h", "17h-18h"]
     };
 
+    // formatage de la date en clés
     function formatDateKey(date) {
-        // Retourne une clé au format "YYYY-MM-DD"
         return date.toISOString().split("T")[0];
     }
-
+    
+    
+    // Mise à jour de l' affichage date et créneaux
     function updateDateDisplay() {
         const formattedDate = dateNow.toLocaleDateString('fr-FR', options);
         displayDateElement.textContent = formattedDate;
         updateTimeSlots();
     }
-
+    
+    // Mise à jour des créneaux
     function updateTimeSlots() {
         const dateKey = formatDateKey(dateNow);
         const reserved = bookedSlots[dateKey] || [];
@@ -80,3 +83,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateDateDisplay();
 });
+

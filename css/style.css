@@ -35,13 +35,14 @@ html {
 
 h1 {
     font-family: var(--font-h1);
-    font-size: 1.5rem;
+    font-size: calc(10px + 3.2vw);
     color: var(--primary-color);
+    background-color: var;
 }
 
 h2 {
     font-family: var(--font-h1);
-    font-size: 1rem;
+    font-size: calc(4px + 2.2vw);
     color: var(--accent-color);
     margin-bottom: 10px;
     padding-left: 4px;
@@ -57,12 +58,12 @@ sup {
 h3 {
     font-family: 'quicksand', sans-serif;
     font-weight: 300;
-    font-size: 0.8rem;
+    font-size: calc(7px + 0.6vw);
     text-align: center;
     color: var(--primary-color);
-    margin-top: 20px;
+    margin-top: 60px;
     letter-spacing: 0.79em;
-    line-height: 1.4rem;
+    line-height: calc(1.4rem + 3vw);
     padding-left: 5px;
 }
 
@@ -97,7 +98,7 @@ h3 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 200px;
+    margin-top: 140px;
     font-family: var(--font-h3);
     height: auto;
 }
@@ -232,7 +233,7 @@ article a {
     display: flex;
     flex-direction: row;
     width: 100%;
-    justify-content: space-around;
+    justify-content: space-evenly;
     margin-bottom: 10px;
 }
 
@@ -320,7 +321,7 @@ form {
     line-height: 14px;
 }
 
-#accordion label+input[type="radio"] {
+#accordion label+input[type="checkbox"] {
     display: none;
 }
 
@@ -334,7 +335,7 @@ form {
 
 }
 
-#accordion label+input[type="radio"]:checked+.content {
+#accordion label+input[type="checkbox"]:checked+.content {
     max-height: 280px;
     border-top: solid 1px var(--primary-color);
 }
@@ -398,4 +399,22 @@ span {
 }
 .calendar .prestation_title {
     width: 40%;
+}
+
+
+footer img {
+    width: 60%;
+    margin-bottom: 50px;
+    cursor: pointer;
+}
+footer {
+text-align: center;
+}
+
+#clement {
+    font-size: 0.7rem;
+    color: var(--secondary-color);
+    margin: 0px 0px 25px 0px;
+    letter-spacing: 0.1rem;
+    font-family: var(--font-p-bold);
 }
