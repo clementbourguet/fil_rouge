@@ -25,6 +25,10 @@ class User
     {
         $this->connexion = (new Bdd())->connectBDD();
     }
+    public function getConnexion(): \PDO
+    {
+        return $this->connexion;
+    }
     //getters et Setters
     public function getIdUser(): int
     {
@@ -164,7 +168,7 @@ class User
     {
         try {
             $email = $this->email;
-            $request = "SELECT u.id_users AS idUser, u.firstname, u.lastname, u.password, u.email 
+            $request = "SELECT u.id AS idUser, u.firstname, u.lastname, u.password, u.email, u.active, u.id_roles 
                     FROM users AS u WHERE u.email = ?";
             $req = $this->connexion->prepare($request);
             $req->bindParam(1, $email);

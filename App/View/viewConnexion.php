@@ -24,7 +24,6 @@
     <header>
         <div class="container">
             <?php include __DIR__ . '/components/navbar.php'; ?>
-            </a>
         </div>
     </header>
 
@@ -38,6 +37,10 @@
             </div>
         </section>
         <!-------------------------Formulaire de connexion------------------------------>
+        <?php if (!empty($error)) : ?>
+            <p style="color:red; text-align:center;"><?= htmlspecialchars($error) ?></p>
+        <?php endif; ?>
+        
         <section class="section_form_connexion">
             <div class="container_form_connexion">
                 <form action="<?= BASE_URL ?>/connexion" method="post" class="form_connexion">
