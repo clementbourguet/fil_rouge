@@ -5,6 +5,7 @@ include "./env.php";
 include "./vendor/autoload.php";
 
 session_start();
+
 // Analyse de l'URL
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
@@ -24,7 +25,7 @@ use App\Controller\AdminController;
 
 $homeController = new HomeController();
 $registerController = new RegisterController();
-$ConnexionController = new ConnexionController();
+$connexionController = new ConnexionController();
 $bookController = new BookController();
 $deconnexionController = new DeconnexionController();
 $adminController = new AdminController();
@@ -40,7 +41,7 @@ if (!isset($_SESSION["connected"])) {
             $registerController->register();
             break;
         case '/connexion':
-            $ConnexionController->connexion();
+            $connexionController->connexion();
             break;
         case '/book':
             $bookController->book();
@@ -50,21 +51,44 @@ if (!isset($_SESSION["connected"])) {
             break;
     }
 } else {
-    // Connectés : ne peuvent pas accéder à inscription/connexion
-    switch ($relativePath) {
-        case '/':
+    // Connectés : routes pour utilisateurs et admins
+    switch (true) {
+
+        case $relativePath === '/':
             $homeController->home();
             break;
-        case '/book':
+
+        case $relativePath === '/book':
             $bookController->book();
             break;
-        case '/admin':
-            $adminController = new AdminController();
-            $adminController->dashboard();
-            break;
-        case '/deconnexion':
+
+        case $relativePath === '/deconnexion':
             $deconnexionController->logout();
             break;
+
+        // ADMIN - toutes les fonctions sur une seule page
+        case preg_match('#^/admin(/.*)?$#', $relativePath, $matches):
+            if ($_SESSION['id_roles'] === 2) {
+                // On regarde le sous-chemin après /admin
+                $subPath = $matches[1] ?? '';
+
+                if ($subPath === '' || $subPath === '/') {
+                    // Dashboard
+                    $adminController->dashboard();
+                } elseif ($subPath === '/add') {
+                    $adminController->addService();
+                } elseif (preg_match('#^/edit/(\d+)$#', $subPath, $m)) {
+                    $adminController->editService((int)$m[1]);
+                } elseif (preg_match('#^/delete/(\d+)$#', $subPath, $m)) {
+                    $adminController->deleteService((int)$m[1]);
+                } else {
+                    $homeController->error404();
+                }
+            } else {
+                $homeController->error404();
+            }
+            break;
+
         default:
             $homeController->error404();
             break;
