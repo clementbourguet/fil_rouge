@@ -27,6 +27,7 @@ main {
 
 form{
     height: auto;
+    display: flex;
 }
 textarea {
     width: 100%;       /* largeur du textarea */
