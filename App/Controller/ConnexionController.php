@@ -8,7 +8,6 @@ class ConnexionController
 {
     public function connexion()
     {
-        session_start();
         $error = '';
 
         // Vérifier si le formulaire a été soumis
@@ -28,6 +27,7 @@ class ConnexionController
                 $_SESSION['connected'] = true;
                 $_SESSION['user_id'] = $user->getIdUser();
                 $_SESSION['user_name'] = $user->getFirstname();
+                $_SESSION['id_roles'] = $user->getIdRoles();
 
                 // Mettre à jour la date de dernière connexion
                 $stmt = $userModel->getConnexion()->prepare(
@@ -36,7 +36,7 @@ class ConnexionController
                 $stmt->execute([$user->getIdUser()]);
 
                 // Redirection vers la page d'accueil
-                header("Location: /");
+                header("Location: " . BASE_URL . "/");
                 exit;
             } else {
                 // Message d'erreur si login incorrect

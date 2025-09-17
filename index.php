@@ -1,40 +1,48 @@
 <?php
 
-//importer les ressources
+// Importer les ressources
 include "./env.php";
-
 include "./vendor/autoload.php";
+
 session_start();
-//Analyse de l'URL avec parse_url() et retourne ses composants
-$url = parse_url($_SERVER['REQUEST_URI']);
+// Analyse de l'URL
+$path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-//test si l'url posséde une route sinon on renvoi à la racine
-$path = $url['path'] ?? '/';
+// Calcul du chemin relatif par rapport à BASE_URL
+$relativePath = substr($path, strlen(BASE_URL)); // supprime /reflexology
+$relativePath = '/' . ltrim($relativePath, '/'); // assure un / devant
+$relativePath = rtrim($relativePath, '/'); // supprime slash final
+$relativePath = $relativePath === '' ? '/' : $relativePath; // si vide → '/'
 
-
-
-
+// Import des controllers
 use App\Controller\HomeController;
-use App\Controller\BookController;
+use App\Controller\RegisterController;
 use App\Controller\ConnexionController;
-
-
+use App\Controller\BookController;
+use App\Controller\DeconnexionController;
+use App\Controller\AdminController;
 
 $homeController = new HomeController();
-$bookController = new BookController();
+$registerController = new RegisterController();
 $ConnexionController = new ConnexionController();
+$bookController = new BookController();
+$deconnexionController = new DeconnexionController();
+$adminController = new AdminController();
 
-
-
-if ( !isset($_SESSION["connected"])) {
-    switch (substr($path, strlen(BASE_URL))) {
-        case "/":
+// Routing
+if (!isset($_SESSION["connected"])) {
+    // Déconnectés : peuvent accéder à inscription et connexion
+    switch ($relativePath) {
+        case '/':
             $homeController->home();
             break;
-        case "/connexion":
+        case '/inscription':
+            $registerController->register();
+            break;
+        case '/connexion':
             $ConnexionController->connexion();
             break;
-            case "/book":
+        case '/book':
             $bookController->book();
             break;
         default:
@@ -42,15 +50,20 @@ if ( !isset($_SESSION["connected"])) {
             break;
     }
 } else {
-    switch (substr($path, strlen(BASE_URL))) {
-        case "/":
+    // Connectés : ne peuvent pas accéder à inscription/connexion
+    switch ($relativePath) {
+        case '/':
             $homeController->home();
             break;
-        case "/connexion":
-            $ConnexionController->connexion();
-            break;
-        case "/book":
+        case '/book':
             $bookController->book();
+            break;
+        case '/admin':
+            $adminController = new AdminController();
+            $adminController->dashboard();
+            break;
+        case '/deconnexion':
+            $deconnexionController->logout();
             break;
         default:
             $homeController->error404();

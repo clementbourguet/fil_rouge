@@ -20,64 +20,58 @@
 </head>
 
 <body>
-    <!--HEADER-->
+
     <header>
         <div class="container">
             <?php include __DIR__ . '/components/navbar.php'; ?>
         </div>
     </header>
 
-    <!--------------main---------------->
-
     <main>
-        <section class="section_connexion">
+       <section class="section_connexion">
             <div class="container_connexion">
                 <h1 id="h1_medium">S'INSCRIRE</h1>
                 <div class="pink_line" id="pink_line_connexion"></div>
             </div>
+        </section>
+            <!-- Affichage des erreurs -->
+            <?php if (!empty($error)) : ?>
+                <p style="color:red;"><?= htmlspecialchars($error) ?></p>
+            <?php endif; ?>
+            <!-- Formulaire -->
             <section class="section_form_connexion">
                 <div class="container_form_connexion">
                     <form action="<?= BASE_URL ?>/inscription" method="post" class="form_connexion">
+                        <label for="firstname">Prénom *</label>
+                        <input type="text" name="firstname" id="firstname" required maxlength="50">
 
-                        <label for="firstname">Prénom</label>
-                        <input type="text" id="firstname" name="firstname" placeholder="Votre prénom"
-                            required maxlength="50">
+                        <label for="lastname">Nom *</label>
+                        <input type="text" name="lastname" id="lastname" required maxlength="50">
 
-                        <label for="lastname">Nom</label>
-                        <input type="text" id="lastname" name="lastname" placeholder="Votre nom"
-                            required maxlength="50">
+                        <label for="email">Email *</label>
+                        <input type="email" name="email" id="email" required maxlength="100">
 
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="votre@email.com"
-                            required maxlength="100">
+                        <label for="telephone">Téléphone *</label>
+                        <input type="tel" name="telephone" id="telephone" maxlength="20" pattern="[0-9+ ]{6,20}">
 
-                        <label for="telephone">Téléphone (facultatif)</label>
-                        <input type="tel" id="telephone" name="telephone" placeholder="06 12 34 56 78"
-                            maxlength="20" pattern="[0-9+ ]{6,20}">
+                        <label for="password">Mot de passe *</label>
+                        <input type="password" name="password" id="password" required minlength="8">
 
-                        <label for="password">Mot de passe</label>
-                        <input type="password" id="password" name="password"
-                            placeholder="********" required minlength="8">
-
-                        <label for="password_confirm">Confirmez le mot de passe</label>
-                        <input type="password" id="password_confirm" name="password_confirm"
-                            placeholder="********" required minlength="8">
+                        <label for="password_confirm">Confirmer mot de passe *</label>
+                        <input type="password" name="password_confirm" id="password_confirm" required minlength="8">
 
                         <button type="submit">S’inscrire</button>
-
-                        <p class="signup_text">
-                            Déjà un compte ? <a href="<?= BASE_URL ?>/connexion">Connectez-vous</a>
-                        </p>
                     </form>
                 </div>
             </section>
+            <p>Déjà un compte ? <a href="<?= BASE_URL ?>/connexion">Connectez-vous</a></p>
+
     </main>
-    <!------------------------------FOOTER------------------------------->
+
     <footer>
         <?php include __DIR__ . '/components/footer.php'; ?>
     </footer>
-    <!------------------------------SCRIPT------------------------------->
-    <script src="<?= BASE_URL ?>/public/script/script.js"></script>
+
 </body>
 
 </html>

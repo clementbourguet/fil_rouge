@@ -83,3 +83,48 @@ CREATE TABLE IF NOT EXISTS services_reservations(
     CONSTRAINT fk_services_reservations_service FOREIGN KEY (service_id) REFERENCES services(id),
     CONSTRAINT fk_services_reservations_reservation FOREIGN KEY (reservation_id) REFERENCES reservations(id)
 )ENGINE=InnoDB;
+
+-- -----------------MODIFICATIONS TABLES-------------------
+ALTER TABLE users
+MODIFY id_roles INT NOT NULL DEFAULT 1;
+
+-- -----------------INSERTION DE DONNÉES FICTIVES-------------------
+INSERT INTO roles (role_name) VALUES ('customer');
+INSERT INTO roles (role_name) VALUES ('admin');
+
+INSERT INTO users (firstname, lastname, email, `password`, telephone, connexion_date, `active`)
+VALUES ('Jacqueline', 'Durand', 'jdurand@durand.fr', 'mypassword', '0612345678', '2025-08-19', TRUE);
+
+INSERT INTO users (firstname, lastname, email, `password`, telephone, connexion_date, `active`)
+VALUES ('Géraldine', 'Dupond', 'gdupond@mymail.fr', 'secretpassword', '0612345678', '2025-08-19', TRUE),
+		('Sylvie', 'Bertrand', 'sylvietlse@monmail.fr', 'mdp31000', '0612345678', '2025-08-19', TRUE),
+        ('Eric', 'Martin', 'ericmartin@mymail.fr', 'martin3101', '0612345678', '2025-08-19', TRUE),
+        ('Catherine', 'Thomas', 'cthomas@bestemail.com', 'cath3102', '0612345678', '2025-08-19', TRUE);
+        
+INSERT INTO services (`name`, `description`, duration_minutes, price, `active`)
+VALUES ("SÉANCE DE REFLEXOLOGIE PERSONNALISÉE COMBINÉE", "Une séance de réflexologie apporte bien être physique et bien être émotionnel. La séance d'une heure est adaptée au recueil d'informations personnalisé selon la 
+méthode Sonia Fischmann.
+Deux microsystèmes seront stimulés en fonction des possibilités et combinés.  
+plantaire - palmaire - faciale - auriculaire", 60, 50, TRUE);
+
+INSERT INTO services (`name`, `description`, duration_minutes, price, `active`)
+VALUES ("CURE VITALITÉ", "votre vitalité est malmenée au quotidien ? 
+Résultat: la fatigue ,le stress, le manque d'énergie et la baisse de moral se font ressentir . Il 
+est important de renforcer votre organisme pour vous maintenir en bonne forme et retrouver 
+un bien être absolu.  
+La cure vitalité vous rendra votre dynamisme d' antan pour profiter de la vie et pour prendre 
+soin de vous durablement ! ", 60, 50, TRUE);
+
+INSERT INTO services (`name`, `description`, duration_minutes, price, `active`)
+VALUES ("CURE ANTI STRESS SOMMEIL", " Insomnies,sommeil agité,réveils fatigués? 
+Grâce à 3 séances de réflexologie combinées vous retrouverez un rythme de vie 
+harmonieux en resynchronisant votre horloge biologique . vous repartirez apaisé et serein 
+pour un équilibre retrouvé et des nuits enfin imperturbables !", 60, 50, TRUE);
+
+INSERT INTO services (`name`, `description`, duration_minutes, price, `active`)
+VALUES ("CURE DÉTOX", "Métro, boulot, dodo! Vous avez le sentiment d'être intoxiqué par une vie trop 
+chargée...  
+Vous souhaitez faire une pause pour nettoyer votre corps ? Vous avez envie de légèreté et d' une peau lumineuse ?  
+La cure détox est un véritable drainage des toxines et une remise en forme du corps et de l' 
+esprit . a faire a chaque début de saison ou après des situations de stress , elle vous 
+redonnera de l eclat ! ", 60, 50, TRUE);

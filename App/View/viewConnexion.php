@@ -36,11 +36,20 @@
                 <div class="pink_line" id="pink_line_connexion"></div>
             </div>
         </section>
-        <!-------------------------Formulaire de connexion------------------------------>
+
+        <!-------------------------Message de confirmation---------------------------->
+        <?php
+        if (!empty($_SESSION['success_message'])) {
+            echo '<p style="color:green; text-align:center;">' . htmlspecialchars($_SESSION['success_message']) . '</p>';
+            unset($_SESSION['success_message']); // on supprime après affichage
+        }
+        ?>
+
+        <!-------------------------Formulaire de connexion---------------------------->
         <?php if (!empty($error)) : ?>
             <p style="color:red; text-align:center;"><?= htmlspecialchars($error) ?></p>
         <?php endif; ?>
-        
+
         <section class="section_form_connexion">
             <div class="container_form_connexion">
                 <form action="<?= BASE_URL ?>/connexion" method="post" class="form_connexion">

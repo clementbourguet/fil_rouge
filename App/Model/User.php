@@ -15,6 +15,7 @@ class User
     private string $signupDate;
     private string $connexionDate;
     private bool $active;
+    private int $idRoles;
 
 
     //bdd
@@ -37,6 +38,14 @@ class User
     public function setIdUser(int $idUser): void
     {
         $this->idUser = $idUser;
+    }
+    public function getIdRoles(): int
+    {
+        return $this->idRoles;
+    }
+    public function setIdRoles(int $idRoles): void
+    {
+        $this->idRoles = $idRoles;
     }
     public function getFirstname(): string
     {
@@ -168,7 +177,7 @@ class User
     {
         try {
             $email = $this->email;
-            $request = "SELECT u.id AS idUser, u.firstname, u.lastname, u.password, u.email, u.active, u.id_roles 
+            $request = "SELECT u.id AS idUser, u.firstname, u.lastname, u.password, u.email, u.active, u.id_roles AS idRoles 
                     FROM users AS u WHERE u.email = ?";
             $req = $this->connexion->prepare($request);
             $req->bindParam(1, $email);
